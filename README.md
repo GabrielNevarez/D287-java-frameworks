@@ -9,14 +9,21 @@ Aztlan Technologies is a locally-owned, family-run tech boutique specializing in
 
 ### C. User Interface Customization
 > - **File:** `mainscreen.html`
-> - **Line 13:** Changed `<title>` from `"My Bicycle Shop"` to `"Aztlan Technologies – Inventory System"`
-> - **Line 17:** Updated main header `<h1>` from `"Shop"` to `"Aztlan Technologies – Your One-Stop Computer Shop"`
-> - **Line 19:** Changed `<h2>` from `"Parts"` to `"Component Inventory"`
-> - **Line ~50:** Changed `<h2>` from `"Products"` to `"Computer Systems"`
+>   - **Line 13:** Changed `<title>` from `"My Bicycle Shop"` to `"Aztlan Technologies – Inventory System"`
+>   - **Line 17:** Updated main header `<h1>` from `"Shop"` to `"Aztlan Technologies – Your One-Stop Computer Shop"`
+>   - **Line 19:** Changed `<h2>` from `"Parts"` to `"Component Inventory"`
+>   - **Line ~50:** Changed `<h2>` from `"Products"` to `"Computer Systems"`
 
-### D. About Page
-> - Add an “About” page describing Aztlan Technologies to viewers.
-> - Include navigation to and from the “About” page and the main screen.
+### D. About Page Implementation
+> - **File:** `mainscreen.html`
+>   - **Line 20:** Added `<a>` button linking to the About page using `th:href="@{/about}"` styled with Bootstrap
+>
+> - **File:** `MainScreenControllerr.java`
+>   **Line 56:** Added `@GetMapping("/about")` to handle navigation to the About page
+>   - **Line 57–58:** Created `showAboutPage()` method to return the `about` view
+>
+> - **File:** `about.html`
+>   - Created new page HTML page to host about
 
 ### E. Sample Inventory
 > - Add five parts and five products to the database **only if** both lists are initially empty.
