@@ -7,6 +7,13 @@ Aztlan Technologies is a locally-owned, family-run tech boutique specializing in
 
 ## Deliverables
 
+### C. User Interface Customization
+> - **File:** `mainscreen.html`
+> - **Line 13:** Changed `<title>` from `"My Bicycle Shop"` to `"Aztlan Technologies – Inventory System"`
+> - **Line 17:** Updated main header `<h1>` from `"Shop"` to `"Aztlan Technologies – Your One-Stop Computer Shop"`
+> - **Line 19:** Changed `<h2>` from `"Parts"` to `"Component Inventory"`
+> - **Line ~50:** Changed `<h2>` from `"Products"` to `"Computer Systems"`
+
 ### D. About Page
 > - Add an “About” page describing Aztlan Technologies to viewers.
 > - Include navigation to and from the “About” page and the main screen.
