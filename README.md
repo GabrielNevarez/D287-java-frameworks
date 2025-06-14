@@ -25,9 +25,19 @@ Aztlan Technologies is a locally-owned, family-run tech boutique specializing in
 > - **File:** `about.html`
 >   - Created new page HTML page to host about
 
-### E. Sample Inventory
-> - Add five parts and five products to the database **only if** both lists are initially empty.
-> - Avoid duplicate items; if duplicates arise, add a “multi-pack” part variant.
+### E. Sample Inventory Implementation
+> - **File:** `BootStrapData.java`
+    >   - **Line 4:** Added import for `InhousePart`
+>   - **Line 6:** Added import for `InhousePartRepository`
+>   - **Line 32:** Declared `private final InhousePartRepository inhousePartRepository;`
+>   - **Line 34:** Modified constructor to include `InhousePartRepository`
+>   - **Line 37:** Assigned `this.inhousePartRepository = inhousePartRepository;`
+>   - **Line 41:** Added `if (partRepository.count() == 0 && productRepository.count() == 0)` block
+>   - **Lines 43–53:** Created and saved `OutsourcedPart` – "Wireless Network Card" from "TechNova Solutions"
+>   - **Lines 55–65:** Created and saved three `InhousePart` items – "RAM 16GB", "1TB SSD", and "Power Supply 650W"
+>   - **Lines 67–73:** Created and saved `OutsourcedPart` – "CPU Cooler" from "CoolerTech Inc."
+>   - **Lines 76–85:** Created and saved five products – "Desktop PC", "Gaming Laptop", "Workstation Tower", "Mini PC", and "All-in-One PC"
+>   - **Lines 89–94:** Removed old sample inventory code and commented-out part/product testing blocks
 
 ### F. Buy Now Button
 > - Add “Buy Now” next to update/delete buttons in the product list.
