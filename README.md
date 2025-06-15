@@ -39,10 +39,19 @@ Aztlan Technologies is a locally-owned, family-run tech boutique specializing in
 >   - **Lines 76–85:** Created and saved five products – "Desktop PC", "Gaming Laptop", "Workstation Tower", "Mini PC", and "All-in-One PC"
 >   - **Lines 89–94:** Removed old sample inventory code and commented-out part/product testing blocks
 
-### F. Buy Now Button
-> - Add “Buy Now” next to update/delete buttons in the product list.
-> - Decrease inventory by 1 (product only; parts remain unchanged).
-> - Show a success or failure message based on stock availability.
+### F. Buy Now Button Implementation
+> - **File:** `mainscreen.html`
+  >   - **Line ~86:** Added a “Buy Now” button next to each product to route the product ID into the controller
+
+> - **File:** `BuyNowController.java`
+>   - **Created new controller** to handle `/orderConfirmationPage` route
+>   - **Checks** if product inventory is less than 1; shows purchase failed message
+>   - **If inventory is available**, decrements product inventory and saves changes
+>   - Adds message (`"Purchase successful!"` or `"Purchase failed: Product out of stock."`) to the model for display in the confirmation page
+> - **File:** `orderConfirmationPage.html`
+>   - Created new Thymeleaf view to confirm purchase result
+>   - Displays product info, success/failure message, and “Return to Main” button
+
 
 ### G. Inventory Max/Min Tracking
 > - Add `maxInventory` and `minInventory` fields to the part entity.
