@@ -53,12 +53,30 @@ Aztlan Technologies is a locally-owned, family-run tech boutique specializing in
 >   - Displays product info, success/failure message, and “Return to Main” button
 
 
-### G. Inventory Max/Min Tracking
-> - Add `maxInventory` and `minInventory` fields to the part entity.
-> - Modify sample inventory to include max/min values.
-> - Update InhousePartForm and OutsourcedPartForm to support max/min input.
-> - Rename the file storing persistent data.
-> - Enforce that inventory must fall within max/min range.
+### G. Inventory Range Validation (Min/Max Inventory Enforcement)
+
+> - **File:** `Part.java`
+    >   - **Line ~16–18:** Added fields `minInv` and `maxInv`
+>   - **Line ~31–41:** Added getters and setters for `minInv` and `maxInv`
+>   - **Line ~43–45:** Added method `isInvValid()` to validate inventory range
+>- **File:** `AddInhousePartController.java`
+>  - **Line ~29–34:** POST method updated to accept `BindingResult`
+>  - **Line ~36:** Calls `isInvValid()` on submitted part object
+>  - **Line ~37:** Uses `result.rejectValue()` to display inventory error
+> - **File:** `AddOutsourcedPartController.java`
+>   - **Line ~29–34:** POST method updated to accept `BindingResult`
+>   - **Line ~36:** Calls `isInvValid()` on submitted part object
+>   - **Line ~37:** Uses `result.rejectValue()` to display inventory error
+> - **File:** `InhousePartForm.html`
+>   - **Line ~19–24:** Added inputs for `minInv`, `maxInv`, and updated `inv`
+>   - **Line ~25–27:** Included `th:errors` for `inv`, `maxInv`, `minInv` validation feedback
+>   - Used `<pre>` to align form spacing
+> - **File:** `OutsourcedPartForm.html`
+>   - **Line ~19–26:** Added input fields for `inv`, `minInv`, `maxInv`
+>   - **Line ~27:** Added `th:errors` to show inventory validation messages
+>- **File:** `BootStrapData.java`
+>  - **Line ~42–60:** Updated sample parts to include `setMinInv()` and `setMaxInv()` calls
+
 
 ### H. Inventory Validation
 > - Show error if part inventory is below min or above max when adding/updating.

@@ -54,6 +54,8 @@ public class BootStrapData implements CommandLineRunner {
             networkCard.setInv(15);
             networkCard.setPrice(34.99);
             networkCard.setId(100L);
+            networkCard.setMaxInv(20);
+            networkCard.setMinInv(5);
             outsourcedPartRepository.save(networkCard);
 
             // 2. Inhouse Part
@@ -62,6 +64,8 @@ public class BootStrapData implements CommandLineRunner {
             ram.setInv(30);
             ram.setPrice(49.99);
             ram.setId(101L);
+            ram.setMaxInv(35);
+            ram.setMinInv(10);
             inhousePartRepository.save(ram);
 
             // 3. Inhouse Part
@@ -70,6 +74,8 @@ public class BootStrapData implements CommandLineRunner {
             ssd.setInv(20);
             ssd.setPrice(89.99);
             ssd.setId(102L);
+            ssd.setMaxInv(35);
+            ssd.setMinInv(10);
             inhousePartRepository.save(ssd);
 
             // 4. Inhouse Part
@@ -78,6 +84,8 @@ public class BootStrapData implements CommandLineRunner {
             psu.setInv(15);
             psu.setPrice(69.99);
             psu.setId(103L);
+            psu.setMaxInv(35);
+            psu.setMinInv(10);
             inhousePartRepository.save(psu);
 
             // 5. Outsourced Part
@@ -87,6 +95,8 @@ public class BootStrapData implements CommandLineRunner {
             cooler.setInv(25);
             cooler.setPrice(39.99);
             cooler.setId(104L);
+            cooler.setMaxInv(35);
+            cooler.setMinInv(10);
             outsourcedPartRepository.save(cooler);
 
 
