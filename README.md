@@ -79,8 +79,26 @@ Aztlan Technologies is a locally-owned, family-run tech boutique specializing in
 
 
 ### H. Inventory Validation
-> - Show error if part inventory is below min or above max when adding/updating.
-> - Show error if updating a product causes associated part inventory to fall below min.
+
+> - **File:** `AddInhousePartController.java`
+    >   - **Line ~30:** Updated method signature to accept `BindingResult` for validation
+>   - **Line ~40:** Called `part.isInvValid()` to validate inventory range
+>   - **Line ~41:** Added check for inventory less than min: reject with error message
+>   - **Line ~43:** Added check for inventory greater than max: reject with error message
+> - **File:** `AddOutsourcedPartController.java`
+    >   - **Line ~30:** Updated method signature to accept `BindingResult`
+>   - **Line ~46:** Called `part.isInvValid()` to check inventory range
+>   - **Line ~47:** Added rejection if inventory below minimum with error message
+>   - **Line ~49:** Added rejection if inventory above maximum with error message
+> - **File:** `AddProductController.java`
+    >   - **Line ~57:** Added logic to detect if inventory is being increased
+>   - **Line ~58–63:** Decremented each associated part’s inventory accordingly when product inventory increases
+> - **File:** `InhousePartForm.html`
+    >   - **Line ~20:** Added input field for `minInv` with `th:field="*{minInv}"`
+>   - **Line ~21:** Added input field for `maxInv` with `th:field="*{maxInv}"`
+>   - **Line ~22:** Updated inventory field to align visually using `<pre>` formatting
+>   - **Line ~25–27:** Added `th:errors` for `inv`, `minInv`, and `maxInv` for validation feedback
+
 
 ### I. Unit Tests
 > - Add at least **two unit tests** for max/min field validation in `PartTest`.

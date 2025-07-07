@@ -133,28 +133,40 @@ public class AddProductController {
 // make the add and remove buttons work
 
     @GetMapping("/associatepart")
-    public String associatePart(@Valid @RequestParam("partID") int theID, Model theModel){
-    //    theModel.addAttribute("product", product);
-    //    Product product1=new Product();
-        if (product1.getName()==null) {
+    public String associatePart(@RequestParam("partID") int theID, Model theModel) {
+        if (product1.getName() == null) {
             return "saveproductscreen";
+        } else {
+            Part part = partService.findById(theID);
+
+            // Check if there's enough inventory
+            if (part.getInv() <= part.getMinInv()) {
+                theModel.addAttribute("errorMessage", "Cannot associate part: inventory would fall below minimum.");
+            } else {
+                // Decrement part inventory
+                part.setInv(part.getInv() - 1);
+                product1.getParts().add(part);
+                part.getProducts().add(product1);
+
+                // Save updates
+                partService.save(part);
+                ProductService productService = context.getBean(ProductServiceImpl.class);
+                productService.save(product1);
+            }
+
+            // Prepare model attributes
+            theModel.addAttribute("product", product1);
+            theModel.addAttribute("assparts", product1.getParts());
+
+            List<Part> availParts = new ArrayList<>();
+            for (Part p : partService.findAll()) {
+                if (!product1.getParts().contains(p)) availParts.add(p);
+            }
+            theModel.addAttribute("availparts", availParts);
+            return "productForm";
         }
-        else{
-        product1.getParts().add(partService.findById(theID));
-        partService.findById(theID).getProducts().add(product1);
-        ProductService productService = context.getBean(ProductServiceImpl.class);
-        productService.save(product1);
-        partService.save(partService.findById(theID));
-        theModel.addAttribute("product", product1);
-        theModel.addAttribute("assparts",product1.getParts());
-        List<Part>availParts=new ArrayList<>();
-        for(Part p: partService.findAll()){
-            if(!product1.getParts().contains(p))availParts.add(p);
-        }
-        theModel.addAttribute("availparts",availParts);
-        return "productForm";}
- //        return "confirmationassocpart";
     }
+
     @GetMapping("/removepart")
     public String removePart(@RequestParam("partID") int theID, Model theModel){
         theModel.addAttribute("product", product);
