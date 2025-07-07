@@ -101,7 +101,10 @@ Aztlan Technologies is a locally-owned, family-run tech boutique specializing in
 
 
 ### I. Unit Tests
-> - Add at least **two unit tests** for max/min field validation in `PartTest`.
+
+> - **File:** InhousePartServiceTest.java
+>    - **Line ~34–37:** Added test method `testSetAndGetMinInv()` to validate `minInv` getter and setter in `InhousePart`
+>    - **Line ~39–42:** Added test method `testSetAndGetMaxInv()` to validate `maxInv` getter and setter in `InhousePart`
 
 ### J. Code Cleanup
 > - Remove any unused validator class files to clean up your codebase.

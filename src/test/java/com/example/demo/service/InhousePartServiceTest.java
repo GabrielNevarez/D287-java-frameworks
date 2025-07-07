@@ -42,4 +42,19 @@ class InhousePartServiceTest {
         List<InhousePart> parts=inhousePartService.findAll();
         assertEquals(partData.size(),1);
     }
+
+    @Test
+    void testSetAndGetMinInv() {
+        InhousePart part = new InhousePart();
+        part.setMinInv(10);
+        assertEquals(10, part.getMinInv(), "Minimum inventory should be 10");
+    }
+
+    @Test
+    void testSetAndGetMaxInv() {
+        InhousePart part = new InhousePart();
+        part.setMaxInv(100);
+        assertEquals(100, part.getMaxInv(), "Maximum inventory should be 100");
+    }
+
 }
