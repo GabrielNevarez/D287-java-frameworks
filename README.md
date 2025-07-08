@@ -107,9 +107,10 @@ Aztlan Technologies is a locally-owned, family-run tech boutique specializing in
 >    - **Line ~39–42:** Added test method `testSetAndGetMaxInv()` to validate `maxInv` getter and setter in `InhousePart`
 
 ### J. Code Cleanup
-> - Remove any unused validator class files to clean up your codebase.
 
-### K. Professionalism
-> - Ensure professional formatting, clear documentation, and clean presentation of code and README.
-
----
+> - **File:** `DeletePartValidator.java`  
+>   - Removed entire class file; no references to this validator exist in the codebase
+> - **File:** `ValidDeletePart.java`  
+>   - Removed custom annotation; not used on any controller or domain class
+> - **File:** `Part.java`  
+>   - **Line ~26:** Removed `@ValidDeletePart` annotation from the class declaration
